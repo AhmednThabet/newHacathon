@@ -11,8 +11,8 @@ export const Pagination = ({
   if (pagesCounts === 1) return null;
   const pages = _.range(1, pagesCounts + 1);
   return (
-    <nav aria-label="Page navigation example">
-      <ul class="inline-flex -space-x-px">
+    <nav aria-label="Page navigation example  " className="flex items-end">
+      <ul class="inline-flex -space-x-px ">
         {pages.map((page) => (
           <li key={page} className>
             <a
