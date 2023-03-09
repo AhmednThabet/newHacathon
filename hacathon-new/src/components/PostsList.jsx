@@ -1,11 +1,9 @@
 import React from "react";
-import PostItem from "./PostItem";
+import List from "./List";
 const PostsList = () => {
   return (
     <div>
-      {[...Array(5)].map(() => (
-        <PostItem />
-      ))}
+      <List />
     </div>
   );
 };

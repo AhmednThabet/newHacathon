@@ -2,6 +2,7 @@ import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import PostsList from './Components/PostsList'
+import Home from './Pages/Home';
 
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
         <Routes>
           <Route path="/SignUp" element={<SignUp />} />
         </Routes>
+        <Routes>
+          <Route path="/Home" element={<Home />} />
+        </Routes>
       </div>
     </Router>
   );
@@ -27,8 +31,4 @@ export default App;
 
 
 
-// function App() {
-//   return (
-//     // <div className="App">
-//     //   <SignUp/>
-//     // </div>
+ 
