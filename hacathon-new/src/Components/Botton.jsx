@@ -1,49 +1,9 @@
 import React from "react";
 
-const Button = () => {
+const Button = ({title}) => {
   return (
-    <div className="flex flex-wrap gap-2">
-  <div>
-    <Button>
-      Default
-    </Button>
-  </div>
-  <div>
-    <Button color="gray">
-      Gray
-    </Button>
-  </div>
-  {/* <div>
-    <Button color="dark">
-      Dark
-    </Button>
-  </div>
-  <div>
-    <Button color="light">
-      Light
-    </Button>
-  </div>
-  <div>
-    <Button color="success">
-      Success
-    </Button>
-  </div>
-  <div>
-    <Button color="failure">
-      Failure
-    </Button>
-  </div>
-  <div>
-    <Button color="warning">
-      Warning
-    </Button>
-  </div>
-  <div>
-    <Button color="purple">
-      Purple
-    </Button>
-  </div> */}
-</div>
+    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-sm text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-full">{title}</button>
+
   );
 };
 
