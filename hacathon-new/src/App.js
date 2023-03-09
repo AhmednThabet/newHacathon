@@ -3,7 +3,7 @@ import PostsList from "./components/PostsList";
 function App() {
   return (
     <Router>
-      <div>
+      <div className="bg-red">
         {/* <Navbar /> */}
         <Routes>
           <Route path="/postList" element={<PostsList />} />
