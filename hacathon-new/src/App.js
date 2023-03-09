@@ -1,9 +1,17 @@
-import List from "./components/List";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import PostsList from "./components/PostsList";
 function App() {
   return (
-    <div className="App">
-      <List />
-    </div>
+    <Router>
+      <div>
+        <NavBar />
+
+        <Routes>
+          <Route path="/postList" element={<PostsList />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

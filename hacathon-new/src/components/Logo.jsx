@@ -1,7 +1,7 @@
 import React from "react";
 
-const Logo = () => {
-  return <div>{/* imag file */}</div>;
+const Logo = ({ src }) => {
+  return <img src={src} alt="img" height={40} width={40} />;
 };
 
 export default Logo;
