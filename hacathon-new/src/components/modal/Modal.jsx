@@ -10,7 +10,7 @@ export default function Modal({
   iconModalClass = "",
 }) {
   const classes = {
-    buttonModal: `inline-flex bg-blue-700 items-center rounded-full p-1 text-white hover:bg-gray-light cursor-pointer transition-all ${
+    buttonModal: `inline-flex bg-blue-700 items-center rounded-full p-1 text-white hover:bg-gray-light   transition-all ${
       buttonModalClass ?? ""
     }  `,
     iconModal: `h-6 w-6 ${iconModalClass ?? ""}`,
@@ -20,8 +20,8 @@ export default function Modal({
       <button type="button" onClick={openModal} className={classes.buttonModal}>
         <span className=" flex gap-2">
           <span className={classes.iconModal}>{iconModal}</span>
+          {titleModal ? titleModal : null}
         </span>
-        {titleModal ? titleModal : null}
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>

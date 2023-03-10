@@ -20,9 +20,9 @@ const PostItem = ({ name, img, email }) => {
           asperiores ut blanditiis unde fugiat, modi cum maxime voluptates ea
           iure accusantium.
         </p>
-        <div className="absolute top-0 right-0">
-          <MyPopover />
-        </div>
+      </div>
+      <div className="absolute top-0 right-0">
+        <MyPopover />
       </div>
     </div>
   );

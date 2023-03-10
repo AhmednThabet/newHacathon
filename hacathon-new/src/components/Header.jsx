@@ -1,6 +1,6 @@
 import React from "react";
 import useModal from "../hooks/useModal";
-import { PlusIconMini } from "../lib/axios/@heroicons";
+import { PlusIconMini } from "../lib/@heroicons";
 
 import Modal from "./modal/Modal";
 export const Header = () => {

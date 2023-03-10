@@ -2,7 +2,7 @@ import {
   PencilSquareIconMini,
   TrashIconMini,
   EllipsisHorizontalMini,
-} from "../lib/axios/@heroicons";
+} from "../lib/@heroicons";
 
 import Modal from "./modal/Modal";
 import useModal from "../hooks/useModal";
@@ -15,11 +15,11 @@ export default function MyPopover() {
     closeModal: closeModal1,
     openModal: openModal1,
   } = useModal();
-  const {
-    isOpen: isOpen2,
-    closeModal: closeModal2,
-    openModal: openModal2,
-  } = useModal();
+  // const {
+  //   isOpen: isOpen2,
+  //   closeModal: closeModal2,
+  //   openModal: openModal2,
+  // } = useModal();
 
   return (
     <div className="w-full max-w-sm px-4 relative">
@@ -39,19 +39,30 @@ export default function MyPopover() {
               closeModal={closeModal1}
               openModal={openModal1}
               iconModalClass="h-4 w-4"
-              buttonModalClass="gap-2  hover:bg-gray-200 py-1 px-3 !bg-transparent text-blue-700"
+              buttonModalClass="gap-2  hover:bg-gray-200 py-1 px-3 !bg-transparent !text-blue-700"
             />
           </span>
           <span className="flex gap-2 items-center  cursor-pointer hover:bg-gray-200 py-1 px-3  transition-all">
-            <Modal
+            <button
+              type="button"
+              className="inline-flex text-blue-700 items-center rounded-full p-1 hover:bg-gray-light px-3  transition-all"
+            >
+              <span className=" flex gap-2">
+                <span className="h-6 w-6">
+                  <TrashIconMini />
+                </span>
+                Delete
+              </span>
+            </button>
+            {/* <Modal
               iconModal={<TrashIconMini />}
               titleModal="Delete"
-              isOpen={isOpen2}
-              closeModal={closeModal2}
-              openModal={openModal2}
+              isOpen={isOpen1}
+              closeModal={closeModal1}
+              openModal={openModal1}
               iconModalClass="h-4 w-4"
-              buttonModalClass="gap-2  hover:bg-gray-200 py-1 px-3 !bg-transparent text-blue-700"
-            />
+              buttonModalClass="gap-2  hover:bg-gray-200 py-1 px-3 !bg-transparent !text-blue-700"
+            /> */}
           </span>
         </div>
       ) : null}
