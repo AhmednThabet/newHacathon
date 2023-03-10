@@ -3,7 +3,7 @@ import useModal from "../hooks/useModal";
 import { PlusIconMini } from "../lib/@heroicons";
 
 import Modal from "./modal/Modal";
-export const Header = () => {
+export const Header = ({ handleAddPost }) => {
   const { isOpen, closeModal, openModal } = useModal();
   return (
     <div className="flex justify-between mb-3">
@@ -13,7 +13,11 @@ export const Header = () => {
         isOpen={isOpen}
         closeModal={closeModal}
         openModal={openModal}
-      />
+        secondButtonText="Add"
+        handleAction={handleAddPost}
+      >
+        {/* here we will pass the add component */}
+      </Modal>
     </div>
   );
 };

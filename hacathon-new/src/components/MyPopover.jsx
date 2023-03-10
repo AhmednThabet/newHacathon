@@ -8,7 +8,7 @@ import Modal from "./modal/Modal";
 import useModal from "../hooks/useModal";
 import { usePopover } from "../hooks/usePopover";
 
-export default function MyPopover() {
+export default function MyPopover({ handleEditPost, handleDeletePost }) {
   const { isShow, handleToggle } = usePopover();
   const {
     isOpen: isOpen1,
@@ -34,18 +34,23 @@ export default function MyPopover() {
           <span className="flex gap-2 items-center  cursor-pointer hover:bg-gray-200 py-1 px-3  transition-all">
             <Modal
               iconModal={<PencilSquareIconMini />}
-              titleModal="Edit"
+              titleOfControlModal="Edit"
               isOpen={isOpen1}
               closeModal={closeModal1}
               openModal={openModal1}
+              secondButtonText="Edit"
               iconModalClass="h-4 w-4"
               buttonModalClass="gap-2  hover:bg-gray-200 py-1 px-3 !bg-transparent !text-blue-700"
-            />
+              handleAction={handleEditPost}
+            >
+              {/* here we will pass the edit component */}
+            </Modal>
           </span>
           <span className="flex gap-2 items-center  cursor-pointer hover:bg-gray-200 py-1 px-3  transition-all">
             <button
               type="button"
               className="inline-flex text-blue-700 items-center rounded-full p-1 hover:bg-gray-light px-3  transition-all"
+              onClick={handleDeletePost}
             >
               <span className=" flex gap-2">
                 <span className="h-6 w-6">
@@ -54,15 +59,6 @@ export default function MyPopover() {
                 Delete
               </span>
             </button>
-            {/* <Modal
-              iconModal={<TrashIconMini />}
-              titleModal="Delete"
-              isOpen={isOpen1}
-              closeModal={closeModal1}
-              openModal={openModal1}
-              iconModalClass="h-4 w-4"
-              buttonModalClass="gap-2  hover:bg-gray-200 py-1 px-3 !bg-transparent !text-blue-700"
-            /> */}
           </span>
         </div>
       ) : null}

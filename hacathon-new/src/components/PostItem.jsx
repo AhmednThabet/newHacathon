@@ -1,6 +1,6 @@
 import React from "react";
 import MyPopover from "./MyPopover";
-const PostItem = ({ name, img, email }) => {
+const PostItem = ({ name, img, text, handleEditPost }) => {
   return (
     <div className="flex relative  gap-4 border  items-center  border-gray-200  p-4  my-1 flex-col md:flex-row">
       {img ? (
@@ -14,15 +14,10 @@ const PostItem = ({ name, img, email }) => {
       )}
       <div className="w-[80%]">
         <span className=" font-semibold text-md">{name}</span>
-        <p className=" font-normal text-sm">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
-          dignissimos mollitia autem praesentium quae iusto ut odit. Qui
-          asperiores ut blanditiis unde fugiat, modi cum maxime voluptates ea
-          iure accusantium.
-        </p>
+        <p className=" font-normal text-sm">{text}</p>
       </div>
       <div className="absolute top-0 right-0">
-        <MyPopover />
+        <MyPopover handleEditPost={handleEditPost} />
       </div>
     </div>
   );

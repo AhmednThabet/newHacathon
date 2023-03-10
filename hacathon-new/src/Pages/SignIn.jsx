@@ -18,7 +18,7 @@ const SignIn = () => {
     const data = {
       email: Email,
     };
-    fetch("https://talentsvalleyhackaton.onrender.com/api/v1/user/login", {
+    fetch("https://hakathon2023.onrender.com/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -29,7 +29,7 @@ const SignIn = () => {
         localStorage.setItem("Token", res.data.accessToken);
         if (res.statusCode >= 400) setError("user not found");
         else if (res.statusCode < 400) {
-          navigate("/Home");
+          navigate("/postList");
         }
       })
       .catch((errr) => console.log(errr));

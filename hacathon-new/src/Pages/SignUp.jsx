@@ -22,7 +22,7 @@ const SignUp = () => {
     if (!Email) {
       setError("required");
     }
-    fetch("https://talentsvalleyhackaton.onrender.com/api/v1/user/signup", {
+    fetch("https://hakathon2023.onrender.com/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

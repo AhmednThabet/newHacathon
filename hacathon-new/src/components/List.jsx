@@ -1,30 +1,50 @@
 import React, { useEffect } from "react";
-import data from "../data/dummy_data.json";
+// import data from "../data/dummy_data.json";
 import { useState } from "react";
 import { paginate } from "./pagination/paginate";
 import Pagination from "./pagination/Pagination";
 import PostItem from "./PostItem";
 import { API_URLS } from "../data/constant";
 import useAxios from "../hooks/useAxios";
+import Header from "./Header";
 export const List = () => {
+  const [allPosts, setAllPosts] = useState([]);
   const { fetchData, response, error, loading } = useAxios();
   useEffect(() => {
-    fetchData({ url: API_URLS.GET_POSTS, method: "get" });
+    fetchData({
+      url: API_URLS.GET_POSTS,
+      method: "get",
+      headers: { Authorization: `Bearer ${localStorage.getItem("Token")}` },
+    });
+    if (response?.statusCode === 200) setAllPosts(response.data.posts);
   }, []);
-  //   fetchData({ url: "user/signup", method: "post", data });
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-  const count = data.length;
-  const dataWithPag = paginate(data, currentPage, pageSize);
+  const count = allPosts.length;
+  const dataWithPag = paginate(allPosts, currentPage, pageSize);
+  // add post function
+  const handleAddPost = () => {};
+  // edit post function
+  const handleEditPost = () => {};
+  // delete post function
+  const handleDeletePost = () => {};
 
   return (
     <div>
-      {dataWithPag.map(({ list, name, email }) => (
-        <PostItem key={list} name={name} email={email} />
+      <Header handleAddPost={handleAddPost} />
+      {dataWithPag.map(({ _id, user, text, img }) => (
+        <PostItem
+          key={_id}
+          name={user.name}
+          img={img}
+          text={text}
+          handleEditPost={handleEditPost}
+          handleDeletePost={handleDeletePost}
+        />
       ))}
       <Pagination
         itemsCount={count}
