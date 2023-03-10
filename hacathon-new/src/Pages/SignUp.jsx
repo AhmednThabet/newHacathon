@@ -8,57 +8,36 @@ import { useNavigate } from 'react-router-dom';
 
 
 const SignUp = () => {
-  const { fetchData, response, error, loading } = useAxios();
-  const END_POINT ="https://api.postman.com/collections/23085561-d03e5c1a-be56-46b0-ba54-816771e14cfa?access_key=PMAT-01GV32ZKZTZH2JDJE3NJPW877W"
-  const namevalidate = new RegExp(/^(?=.*[a-z A-Z]).{2,}/);
-  const emailvalidate = new RegExp(/^\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/);
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const[Name,setName]=useState("");
+  const[Email,setEmail]=useState("");
+  const [error, setError] = useState("");
   const[messagehandle1,setMessagehandle1]=useState("");
-  const[messagehandle2,setMessagehandle2]=useState("");
-  const handlename = () => {
-    if(namevalidate.test(fullName)){
-        setMessagehandle1 ("");
-    }else{
-        setMessagehandle1 (<span>the name must be at least 3 char </span>);
-    }
-}
-const handleEmail = () => {
-    if(emailvalidate.test(email)){
-        setMessagehandle2 ("");            
-    }else{
-        setMessagehandle2 (<p> Your email is not</p>);
-    }
-}
-  const setEmaill = () => {
-    (event) => setEmail(event.target.value);
-  };
-  const setName = () => {
-    (event) => setFullName(event.target.value);
-  };
-  // const navigate = useNavigate();
+  const namevalidate = new RegExp(/^(?=.*[a-z A-Z]).{2,}/);  
   const onHandleSubmit = (e) =>{
     e.preventDefault(); 
-    fetchData({
-        url: `${END_POINT}user/signup`,
-        method: "post",
-        data: {
-        name: { fullName },
-        email: { email },
-        },
-    });
-//     .then((response) => response.json())
-//         .then((result) => {
-//             console.log(result)
-//             localStorage.setItem('Token',(result.data.accessToken))
-//             localStorage.setItem('User',JSON.stringify(result.data.user))
-//             navigate('/SignIn') 
-//         }
-//         )
-//         .catch((error) => console.log('error', error)); 
-// }
-}
+    const data = {
+        name:Name,
+        email: Email,
+    }
+    if(!Email) {
+      setError("required");
+    }
+    fetch('https://talentsvalleyhackaton.onrender.com/api/v1/user/signup', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+        console.log(result)
+        localStorage.setItem('Token',(result.data.accessToken))
+        navigate('/SignIn') 
+    }
+    )
+    .catch((error) => console.log('error', error)); 
+};
+
 
   return (
     <form onSubmit={onHandleSubmit}>
@@ -71,16 +50,15 @@ const handleEmail = () => {
       <div className="flex  flex-col mb-8">
         <div className="mb-4 ">
           <p className="text-base font-semibold mb-2"> Name </p>
-          <Input type={"text"} value={value} onChange={setName} />
-          <span>{messagehandle1}</span>
+          <Input type={"text"}  onChange={event => {setName(event.target.value); }}/>
         </div>
         <div>
           <p className="text-base font-semibold mb-2"> Email </p>
-          <Input type={"email"} value={value} onChange={setEmaill} />
-          <span>{messagehandle2}</span>
+          <Input type={"email"} onChange={event => setEmail(event.target.value)} />
+          <>{error}</>
         </div>
       </div>
-      <Button title={"Sign up"} />
+      <Button title={"Sign up"} type="submit"/>
       <p className="text-base font-semibold text-center mt-10">
         Already have an account?
         <Link className="text-[#2D65E4]" to="/SignIn"> login</Link>
@@ -91,3 +69,5 @@ const handleEmail = () => {
 };
 
 export default SignUp;
+
+

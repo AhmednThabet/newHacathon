@@ -9,21 +9,33 @@ import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const[email,setEmail]=useState("");
-  const setEmaill = () =>{
-    event => setEmail(event.target.value)
-  } 
+  const[Email,setEmail]=useState("");
+  const[error,setError]=useState("");
   const onHandleSubmit = (e) =>{
-    e.preventDefault(); 
-    fetchData({
-        url: `${END_POINT}user/signup`,
-        method: "post",
-        data: {
-        name: { fullName },
-        email: { email },
-        },
-    });
-}
+    if(!Email) {
+      setError("required");
+    }
+    e.preventDefault();
+    const data = {
+      email: Email,
+    }
+    fetch('https://talentsvalleyhackaton.onrender.com/api/v1/user/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+    .then((response) =>  response.json())
+    .then( res => {
+      console.log(res)
+      localStorage.setItem('Token',(res.data.accessToken))
+      if (res.statusCode >= 400)
+        setError("user not found")
+      else if(res.statusCode < 400)
+        { navigate('/Home')}
+    })
+    .catch( (errr) => console.log(errr))  
+  }
+  
  
  return(
   <form onSubmit={onHandleSubmit}>
@@ -34,11 +46,11 @@ const SignIn = () => {
       <p className='text-lg font-semibold mb-5'>Fill the following information to create an account</p>
       <div className='mb-7'>
         <p className='text-base font-semibold mb-2'> Email </p>
-        <Input type={"email"} onChange={setEmaill} value={value}/>
+        <Input type={"email"} onChange={event => setEmail(event.target.value)}  />
+        <span>{error}</span>
       </div>  
-      <Button title={"Login"}/>    
+      <Button title={"Login"} type="submit"/>    
       <p className='text-base font-semibold text-center mt-10'>Don't have an account? <Link className='text-[#2D65E4]' to="/SignUp">  Sign up </Link></p>
-    
     </div>
     </form>
  );
@@ -46,3 +58,4 @@ const SignIn = () => {
 }
 
 export default SignIn;
+
