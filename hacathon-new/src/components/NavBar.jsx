@@ -4,7 +4,7 @@ import Logo from "./Logo";
 const NavBar = () => {
   return (
     <div className="mb-[63px]">
-      <nav className="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+      <nav className="bg-white px-2 sm:px-4 py-2.5   fixed w-full z-20 top-0 left-0 border-b border-gray-200  ">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <a href="#" className="flex items-center">
             <Logo src="/images/logo.svg" />
@@ -28,7 +28,7 @@ const NavBar = () => {
                 <input
                   type="search"
                   id="default-search"
-                  className="block w-full p-2 pl-2 text-sm text-gray-200 border border-gray-200 rounded-md   focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="block w-full p-2 pl-2 text-sm text-gray-200 border border-gray-200 rounded-md   focus:ring-blue-500 focus:border-blue-500  "
                   placeholder="Search "
                   required
                 />
