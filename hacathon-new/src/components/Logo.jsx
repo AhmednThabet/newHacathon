@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from "react";
 
+const Logo = () => {
+  return (
+    <>
+      <img src="/image/logo.svg" width={40} height={40} alt="logo" />
+    </>
+  );
+};
 
-const Logo = ({title, type}) => {
-    return(
-       <>
-        <img src="/image/logo.svg" width="70px" className='m-auto mb-5'/> 
-       </>
-    );
-   
-   }
-   
-   export default Logo;
+export default Logo;

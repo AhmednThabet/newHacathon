@@ -4,7 +4,7 @@ import Logo from "./Logo";
 const NavBar = () => {
   return (
     <div className="mb-[63px]">
-      <nav className="bg-white px-2 sm:px-4 py-2.5   fixed w-full z-20 top-0 left-0 border-b border-gray-200  ">
+      <nav className="bg-white px-2   py-2    fixed w-full z-20 top-0 left-0 border-b border-gray-200  ">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <a href="#" className="flex items-center">
             <Logo src="/images/logo.svg" />
