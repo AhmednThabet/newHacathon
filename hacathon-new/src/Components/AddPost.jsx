@@ -29,10 +29,10 @@ export const AddPost = ({ closeModal }) => {
         "content-type": "multipart/form-data",
       },
     });
-    if (response?.statusCode === 201) {
-      closeModal();
-    }
   };
+  if (response?.statusCode === 201) {
+    closeModal();
+  }
   return (
     <div className=" ">
       <span className=" inline-block font-semibold text-xl">Add Post</span>

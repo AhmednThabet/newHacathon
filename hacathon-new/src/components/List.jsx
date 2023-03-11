@@ -8,6 +8,8 @@ import useAxios from "../hooks/useAxios";
 import Header from "./Header";
 export const List = () => {
   const { fetchData, response } = useAxios();
+  const { fetchData: fetchDataForDelete, response: responseForDelete } =
+    useAxios();
   const [allPosts, setAllPosts] = useState([]);
 
   useEffect(() => {
@@ -43,16 +45,16 @@ export const List = () => {
   };
   // delete post function
   const handleDeletePost = (id) => {
-    fetchData({
+    fetchDataForDelete({
       url: API_URLS.DELETE_POST(id),
-      method: "del",
+      method: "delete",
       headers: { Authorization: `Bearer ${localStorage.getItem("Token")}` },
     });
-    // if (response?.statusCode === 200) {
-    //   const posts = { ...allPosts };
-    //   const filteredPosts = posts.filter((post) => post._id !== id);
-    //   setAllPosts(filteredPosts);
-    // }
+
+    const posts = [...allPosts];
+    const filteredPosts = posts.filter((post) => post._id !== id);
+    setAllPosts(filteredPosts);
+    console.log(allPosts);
   };
 
   return (
