@@ -7,19 +7,21 @@ import {
 import Modal from "./modal/Modal";
 import useModal from "../hooks/useModal";
 import { usePopover } from "../hooks/usePopover";
+import EditPost from "./EditPost";
 
-export default function MyPopover({ handleEditPost, handleDeletePost }) {
+export default function MyPopover({
+  idPost,
+  handleEditPost,
+  handleDeletePost,
+  text,
+  image,
+}) {
   const { isShow, handleToggle } = usePopover();
   const {
     isOpen: isOpen1,
     closeModal: closeModal1,
     openModal: openModal1,
   } = useModal();
-  // const {
-  //   isOpen: isOpen2,
-  //   closeModal: closeModal2,
-  //   openModal: openModal2,
-  // } = useModal();
 
   return (
     <div className="w-full max-w-sm px-4 relative">
@@ -41,16 +43,21 @@ export default function MyPopover({ handleEditPost, handleDeletePost }) {
               secondButtonText="Edit"
               iconModalClass="h-4 w-4"
               buttonModalClass="gap-2  hover:bg-gray-200 py-1 px-3 !bg-transparent !text-blue-700"
-              handleAction={handleEditPost}
             >
-              {/* here we will pass the edit component */}
+              <EditPost
+                closeModal={closeModal1}
+                idPost={idPost}
+                handleEditPost={handleEditPost}
+                text={text}
+                image={image}
+              />
             </Modal>
           </span>
           <span className="flex gap-2 items-center  cursor-pointer hover:bg-gray-200 py-1 px-3  transition-all">
             <button
               type="button"
               className="inline-flex text-blue-700 items-center rounded-full p-1 hover:bg-gray-light px-3  transition-all"
-              onClick={handleDeletePost}
+              onClick={() => handleDeletePost(idPost)}
             >
               <span className=" flex gap-2">
                 <span className="h-6 w-6">

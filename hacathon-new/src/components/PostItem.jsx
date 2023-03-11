@@ -1,6 +1,13 @@
 import React from "react";
 import MyPopover from "./MyPopover";
-const PostItem = ({ name, img, text, handleEditPost }) => {
+const PostItem = ({
+  id,
+  name,
+  img,
+  text,
+  handleEditPost,
+  handleDeletePost,
+}) => {
   return (
     <div className="flex relative  gap-4 border  items-center  border-gray-200  p-4  my-1 flex-col md:flex-row">
       {img ? (
@@ -17,7 +24,13 @@ const PostItem = ({ name, img, text, handleEditPost }) => {
         <p className=" font-normal text-sm">{text}</p>
       </div>
       <div className="absolute top-0 right-0">
-        <MyPopover handleEditPost={handleEditPost} />
+        <MyPopover
+          handleEditPost={handleEditPost}
+          handleDeletePost={handleDeletePost}
+          text={text}
+          image={img}
+          idPost={id}
+        />
       </div>
     </div>
   );

@@ -4,28 +4,21 @@ export const useAxios = () => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [controller, setController] = useState();
 
   const fetchData = async (configObj) => {
     try {
       setLoading(true);
-      const ctrl = new AbortController();
-      setController(ctrl);
-      const result = await axios.request({ ...configObj, signal: ctrl.signal });
-      console.log(result.data);
+
+      const result = await axios.request({ ...configObj });
       setResponse(result.data);
+      console.log(result.data);
     } catch (err) {
-      console.log(err.response.data);
-      setError(err.response.data);
+      console.log(err);
+      setError(err.response);
     } finally {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    // useEffect cleanup function
-    return () => controller && controller.abort();
-  }, [controller]);
 
   return {
     fetchData,

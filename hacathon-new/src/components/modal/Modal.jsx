@@ -9,8 +9,6 @@ export default function Modal({
   openModal,
   buttonModalClass = "",
   iconModalClass = "",
-  secondButtonText = "",
-  handleAction = () => {},
 }) {
   const classes = {
     buttonModal: `inline-flex bg-blue-700 items-center rounded-full p-1 text-white hover:bg-gray-light   transition-all ${
@@ -54,25 +52,6 @@ export default function Modal({
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   {children}
-                  <div className="mt-4 flex gap-2">
-                    <button
-                      type="button"
-                      className="w-full justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Cancel
-                    </button>
-                    {secondButtonText ? (
-                      <button
-                        type="button"
-                        className="w-full   justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-
-                        // onClick={closeModal} here we will put two handlers (first one is the add or edit handler (handleAction from props) , second the closeModal handler)
-                      >
-                        {secondButtonText}
-                      </button>
-                    ) : null}
-                  </div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

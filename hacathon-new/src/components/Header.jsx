@@ -1,9 +1,10 @@
 import React from "react";
 import useModal from "../hooks/useModal";
 import { PlusIconMini } from "../lib/@heroicons";
+import AddPost from "./AddPost";
 
 import Modal from "./modal/Modal";
-export const Header = ({ handleAddPost }) => {
+export const Header = () => {
   const { isOpen, closeModal, openModal } = useModal();
   return (
     <div className="flex justify-between mb-3">
@@ -14,9 +15,8 @@ export const Header = ({ handleAddPost }) => {
         closeModal={closeModal}
         openModal={openModal}
         secondButtonText="Add"
-        handleAction={handleAddPost}
       >
-        {/* here we will pass the add component */}
+        <AddPost closeModal={closeModal} />
       </Modal>
     </div>
   );
