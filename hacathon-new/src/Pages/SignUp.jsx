@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Input from "../components/Input";
-import Logo from "../components/Logo";
+import Input from "../Components/Input";
+import Logo from "../Components/Logo";
 import { Link } from "react-router-dom";
-import Button from "../components/Botton";
+import Button from "../Components/Botton";
 import { useAxios } from "../hooks";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +38,7 @@ const SignUp = () => {
 
   return (
     <form onSubmit={onHandleSubmit}>
-      <div className="border-solid  w-1/4 m-auto mt-10">
+      <div className="border-solid  w-1/4 m-auto mt-[150px] rounded shadow-lg p-10">
         <Logo />
         <h1 className="text-xl font-bold">Sign Up</h1>
         <p className="text-lg font-semibold mb-5">

@@ -9,7 +9,7 @@ export const EditPost = ({
   text: pastText,
   image: pastImg,
 }) => {
-  const { fetchData, response } = useAxios();
+  const { fetchData, response, loading } = useAxios();
   const [text, setText] = useState();
   const [image, setImage] = useState();
   // we will make this change when click on the or delete button as in xd (I set it by default false)
@@ -72,7 +72,7 @@ export const EditPost = ({
           className="w-full   justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           onClick={handleEditClick}
         >
-          Edit
+          {loading ? "Loading..." : "Edit"}
         </button>
       </div>
     </div>
