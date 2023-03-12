@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Input from "../Components/Input";
-import Logo from "../Components/Logo";
+import Input from "../components/Input";
+import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
-import Button from "../Components/Botton";
+import Button from "../components/Botton";
 import { useAxios } from "../hooks";
 import { useNavigate } from "react-router-dom";
 
